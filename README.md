@@ -14,4 +14,4 @@ Click "Install this script" on this page.
 
 Double click post date, on a post's right corner.
 
-The script will then retrieve and analyze the post's data, and show its status using .
+The script will then retrieve and analyze the post's data, and show its status using NGA style alert dialog.
