@@ -1,12 +1,13 @@
 // ==UserScript==
 // @name         NGA Post Status Query
 // @namespace    https://greasyfork.org/users/826221
-// @version      1.0.0
+// @version      1.0.1
 // @description  Check NGA post status.
 // @author       DSakura207
 // @include      /^https?://(bbs\.ngacn\.cc|nga\.178\.com|bbs\.nga\.cn|ngabbs\.com)/.+/
 // @require      https://greasyfork.org/scripts/39014-nga-user-script-loader/code/NGA%20User%20Script%20Loader.js?version=809809
 // @grant        none
+// @license      GPL-3.0-or-later; https://www.gnu.org/licenses/gpl-3.0.txt
 // ==/UserScript==
 
 // This user script is inspired by https://greasyfork.org/en/scripts/376589.
