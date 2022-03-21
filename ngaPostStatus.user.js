@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         NGA Post Status Query
 // @namespace    https://greasyfork.org/users/826221
-// @version      1.0.2
+// @version      1.0.3
 // @description  Check NGA post status.
 // @author       DSakura207
 // @include      /^https?://(bbs\.ngacn\.cc|nga\.178\.com|bbs\.nga\.cn|ngabbs\.com)/.+/
