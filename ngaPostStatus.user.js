@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         NGA Post Status Query
 // @namespace    https://greasyfork.org/users/826221
-// @version      1.0.3
+// @version      1.0.4
 // @description  Check NGA post status.
 // @author       DSakura207
 // @include      /^https?://(bbs\.ngacn\.cc|nga\.178\.com|bbs\.nga\.cn|ngabbs\.com)/.+/
@@ -104,12 +104,12 @@
           );
           let tid = params.get("tid");
           console.debug("TID is " + tid);
-          $.get(`/read.php?tid=${tid}&lite=js`).done(function (data) {
+          $.get(`/read.php?tid=${tid}&__output=11`).done(function (data) {
             b.showData(data, tid, "thread");
           });
         } else {
           console.debug("PID is " + pid);
-          $.get(`/read.php?pid=${pid}&lite=js`).done(function (data) {
+          $.get(`/read.php?pid=${pid}&__output=11`).done(function (data) {
             b.showData(data, pid, "post");
           });
         }
