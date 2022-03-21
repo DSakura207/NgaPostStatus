@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         NGA Post Status Query
 // @namespace    https://greasyfork.org/users/826221
-// @version      1.0.2
+// @version      1.0.3
 // @description  Check NGA post status.
 // @author       DSakura207
 // @include      /^https?://(bbs\.ngacn\.cc|nga\.178\.com|bbs\.nga\.cn|ngabbs\.com)/.+/
@@ -116,13 +116,7 @@
       },
       showData: function (data, pid, postType) {
         const typeName = postType.toUpperCase();
-        // Convert from JSONP to JSON
-        const index = data.indexOf("{");
-        // Clean up NGA JSON.
-        const rawData = data
-          .substring(index)
-          .replace(/[\u0000-\u001F\u007F-\u009F]/g, "");
-        const postData = JSON.parse(rawData);
+        const postData = data;
         // Post status
         const typeFlags = postData["data"]["__R"][0]["type"];
         // Thread status
@@ -131,8 +125,8 @@
         let postStatusObj = {};
         // Thread status object
         let postStatusObj2 = {};
-        // commonui.alert content array
-        let postStatusArray = [];
+        // commonui.alert content string
+        let postStatusString = "";
         // Produce thread main or reply post status object.
         for (const [info, mask] of Object.entries(b.statusFlag)) {
           // Hack for JavaScript bitwise operation.
@@ -141,21 +135,21 @@
           let rc2 = (mask.flag & typeFlags2) >>> 0;
           if (rc == mask.flag && postType === "post") {
             postStatusObj[info] = mask.description;
-            postStatusArray.push(mask.description + "；");
+            postStatusString += (mask.description + "；");
           }
           if (rc2 == mask.flag && postType === "thread") {
             postStatusObj2[info] = mask.description;
-            postStatusArray.push(mask.description + "；");
+            postStatusString += (mask.description + "；");
           }
         }
         // Output status object for reference
         console.debug(postStatusObj);
         console.debug(postStatusObj2);
         // Return when status is normal (0).
-        if (postStatusArray.length == 0) {
+        if (postStatusString.length == 0) {
           return;
         }
-        commonui.alert(postStatusArray, `${typeName} ${pid}`);
+        commonui.alert(postStatusString, `${typeName} ${pid}`);
       },
       r: function () {
         // Ensure only one handler is attached
